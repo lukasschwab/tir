@@ -2,22 +2,21 @@ import click, sys, os, datetime
 
 def main():
     # Ask for each input with click
-    url = click.prompt("URL: ")
-    name = click.prompt("Title: ")
-    author = click.prompt("Author: ")
-    note = click.prompt("Note: ")
+    url = click.prompt("URL")
+    name = click.prompt("Title")
+    author = click.prompt("Author")
+    note = click.prompt("Note")
     today = datetime.date.today().strftime("%B %d, %Y")
 
     # Render into HTML
-    htmlString = '<tr> <td><a href="'+url+'">'+name+'</a></td> <td>'+author+'</td> <td>'+note+'</td> <td>'+today+'</td> </tr>'
-    print htmlString
+    htmlString = '<tr> <td><a href="'+url+'">'+name+'</a></td> <td>'+author+'</td> <td>'+note+'</td> <td>'+today+'</td> </tr>\n'
 
     # Check if it's a new day
     # Create the new table if it is
     # Remove the date column in the table
 
     # Add into file
-    path = "tir.html"
+    path = os.path.expanduser("~/Desktop/Programming Projects/tir/tir.html")
     f = open(path, "r")
     contents = f.readlines()
     f.close()
@@ -29,6 +28,8 @@ def main():
     f.write(contents)
     f.close()
 
+    click.echo("You read it!")
     sys.exit(0)
 
-main()
+if __name__ == '__main__':
+    main()
