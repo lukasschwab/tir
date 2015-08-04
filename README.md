@@ -8,4 +8,4 @@ This was supposed to be functionality that I'd build into ezrss, but I'm finding
 
 [Here](https://gist.github.com/lukasschwab/7f49a25e18932c462618) is an example template for an empty `tir.html`. I will keep it updated as tir changes.
 
-:heart:
+<p align="center"><img src="http://i.imgur.com/x64MMrx.png"></p>
