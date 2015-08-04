@@ -1,0 +1,27 @@
+html {
+  width: 1000px;
+  margin: auto;
+  max-width: 80%;
+}
+
+.title {
+	font-size: 70px; 
+	text-decoration: bold; 
+	margin-top: 2em; 
+	color: #0074D9;
+	text-align: center;
+}
+
+p {
+	text-align: center;
+}
+
+/* HORIZONTAL RULE BLOCK */
+hr {
+	height: 2px;
+    background-color: #0074D9;
+    border: none;
+    width: 50%;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
