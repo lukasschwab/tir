@@ -1,4 +1,4 @@
-import click, sys, os, datetime
+import click, sys, os, datetime, hashlib
 
 def main():
     # Ask for each input with click
@@ -22,8 +22,8 @@ def main():
 
     if today != contents[0][4:-4]:
         contents[0] = "<!--"+today+"-->\n"
-        # Create a new table
-        contents += ['\n<h3>'+today+'</h3>\n','<table class="table">\n','\t<tr>\n','\t\t<th>Title</th>\n','\t\t<th>Author</th>\n','\t\t<th>Note</th>\n','\t\t<th>Date</th>\n','\t</tr>\n','</table>']
+        # Create a new separator row
+        contents.insert(-1, '\n\t<td colspan="4"><h3 id="'+hashlib.md5(today).hexdigest()+'">'+today+"</h3></td>\n")
 
     # Add new entry
     contents.insert(-1, htmlString)

@@ -13,8 +13,11 @@ html {
 }
 
 h3 {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  font-size: 12px;
   text-align: center;
-  margin-top: 50px;
+  color: #0074D9;
 }
 
 p {
