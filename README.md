@@ -1,6 +1,7 @@
 # tir
-
-This is some Python prototyping for a Google Chrome extension I will build.
+<p align="center">
+<img src="http://lukasschwab.github.io/img/reading.gif">
+</p>
 
 The aim is to collect everything you read every day so you can find and share it. No more "I forget where I read it..."
 
