@@ -1,8 +1,10 @@
 import click, sys, os, datetime, hashlib
 
+# NOTE: change this to your version
+html = "~/Desktop/Programming Projects/lukasschwab.github.io/tir.html"
+
 # Read file contents
-# TODO: MAKE THIS PATH RELATIVE
-path = os.path.expanduser("~/Desktop/Programming Projects/lukasschwab.github.io/tir.html")
+path = os.path.expanduser(html)
 with open(path, "r") as f:
     contents = [unicode(l, 'utf-8') for l in f.readlines()]
 
