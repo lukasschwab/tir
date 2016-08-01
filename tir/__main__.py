@@ -1,4 +1,4 @@
-import click, sys, os, datetime, hashlib
+import click, sys, os, datetime, hashlib, codecs
 
 # Configuration for Click handling
 # class Config():
@@ -11,10 +11,10 @@ import click, sys, os, datetime, hashlib
 
 # Read file contents
 # TODO: MAKE THIS PATH RELATIVE
-path = os.path.expanduser("~/Desktop/Programming Projects/tir/tir.html")
-f = open(path, "r")
-contents = f.readlines()
-f.close()
+path = os.path.expanduser("~/Desktop/Programming Projects/lukasschwab.github.io/tir.html")
+with open(path, "r") as f:
+    # print f.readlines()
+    contents = [unicode(l, 'utf-8') for l in f.readlines()]
 
 # Date handling
 today = datetime.date.today().strftime("%B %d, %Y")
@@ -53,10 +53,9 @@ def rm():
 
 def write(contents):
     # Save changes to file
-    f = open(path, "w")
-    contents = "".join(contents)
-    f.write(contents)
-    f.close()
+    with open(path, "w") as f:
+        contents = "".join(contents).encode('utf-8')
+        f.write(contents)
 
 
 @click.command()
