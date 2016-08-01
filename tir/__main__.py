@@ -1,19 +1,9 @@
-import click, sys, os, datetime, hashlib, codecs
-
-# Configuration for Click handling
-# class Config():
-#     """ Main configuration object """
-#     def __init__(self):
-#         self.delete = False
-
-# pass_config = click.make_pass_decorator(Config, ensure=True)
-
+import click, sys, os, datetime, hashlib
 
 # Read file contents
 # TODO: MAKE THIS PATH RELATIVE
 path = os.path.expanduser("~/Desktop/Programming Projects/lukasschwab.github.io/tir.html")
 with open(path, "r") as f:
-    # print f.readlines()
     contents = [unicode(l, 'utf-8') for l in f.readlines()]
 
 # Date handling
@@ -62,7 +52,6 @@ def write(contents):
 @click.option("--delete", is_flag=True, help="Deletes last entry")
 def main(delete):
     """Parses command-line arguments for tir"""
-
     if delete:
         rm()
     else:
