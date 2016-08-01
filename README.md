@@ -3,10 +3,22 @@
 <img src="http://lukasschwab.github.io/img/reading.gif">
 </p>
 
+tir––short for "Today I Read"––is a barebones CLI for logging memorable articles.
+
+## About
+
 The aim is to collect everything you read every day so you can find and share it. No more "I forget where I read it..."
 
 This was supposed to be functionality that I'd build into ezrss, but I'm finding that difficult (because that would require scraping a whole bunch of text that is structured differently). There might be eventual integration, but not right now.
 
-[Here](https://github.com/lukasschwab/tir/blob/master/tir.html) is an example template for an empty `tir.html`. I will keep it updated as tir changes.
+## Setup
 
-<p align="center"><img src="http://i.imgur.com/x64MMrx.png"></p>
+1. Download/unzip or clone this repository: `git clone https://github.com/lukasschwab/tir.git`.
+
+2. Optionally, move `tir.html` to a desired location (e.g. if you don't want to host tir separately, move `tir.html` into a GitHub Pages repo). Simplest setup with GitHub Pages would be to create a gh-pages branch (`git branch gh-pages`) and leave `tir.html` where it is.
+
+3. Modify [tir/__main__.py](https://github.com/lukasschwab/tir/blob/master/tir/__main__.py) so that the path on line four points to your local copy of `tir.html`. For example, `html = "~/Desktop/tir/tir.html"`.
+
+4. *After changing that path*, run `python setup.py install` from the project root directory.
+
+5. From the command line, just run `tir`. To undo an entry, run `tir --delete`.
