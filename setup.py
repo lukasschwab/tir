@@ -8,6 +8,6 @@ setup (
     entry_points={
         'console_scripts': [
             'tir=tir.__main__:main'
-        ],
+        ]
     }
 )
