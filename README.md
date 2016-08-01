@@ -17,7 +17,7 @@ This was supposed to be functionality that I'd build into ezrss, but I'm finding
 
 2. Optionally, move `tir.html` to a desired location (e.g. if you don't want to host tir separately, move `tir.html` into a GitHub Pages repo). Simplest setup with GitHub Pages would be to create a gh-pages branch (`git branch gh-pages`) and leave `tir.html` where it is.
 
-3. Modify [tir/__main__.py](https://github.com/lukasschwab/tir/blob/master/tir/__main__.py) so that the path on line four points to your local copy of `tir.html`. For example, `html = "~/Desktop/tir/tir.html"`.
+3. Modify [tir/\_\_main\_\_.py](https://github.com/lukasschwab/tir/blob/master/tir/__main__.py) so that the path on line four points to your local copy of `tir.html`. For example, `html = "~/Desktop/tir/tir.html"`.
 
 4. *After changing that path*, run `python setup.py install` from the project root directory.
 
