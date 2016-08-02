@@ -22,3 +22,7 @@ This was supposed to be functionality that I'd build into ezrss, but I'm finding
 4. *After changing that path*, run `python setup.py install` from the project root directory.
 
 5. From the command line, just run `tir`. To undo an entry, run `tir --delete`.
+
+## To do
+
++ Add RSS feed
