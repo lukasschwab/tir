@@ -1,6 +1,6 @@
 import click, sys, os, datetime, hashlib
 
-# NOTE: change this to your version
+# NOTE: change this to your html version
 html = "~/Desktop/Programming Projects/lukasschwab.github.io/tir.html"
 
 # Read file contents
