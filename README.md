@@ -1,9 +1,10 @@
 # tir
 <p align="center">
+tir––short for "Today I Read"––is a barebones CLI for logging memorable articles.<br>
 <img src="http://lukasschwab.github.io/img/reading.gif">
 </p>
 
-tir––short for "Today I Read"––is a barebones CLI for logging memorable articles.
+***
 
 ## About
 
