@@ -24,16 +24,9 @@ This was supposed to be functionality that I'd build into ezrss, but I'm finding
 
 5. From the command line, just run `tir`. To undo an entry, run `tir --delete`.
 
-<!-- FIXME: not crontab... -->
-
 I've also done some hacking with `launchctl` to auto-push changes to my tir.html file. This is very hacky, and will stop whenever I have to do development in that repo. That script lives [here](https://github.com/lukasschwab/lukasschwab.github.io).
 
 ## To do
-
-+ Add RSS link on the tir site
-
-+ Add remove functionality.
-    + Mostly done; need to roll back to previous date if I want to be able to delete multiple items...
 
 + Only list last 15 or so tirs in the feed (cleanup)
     + Maybe need to include date as an attr for each item element? Shouldn't screw up the rest...
@@ -41,3 +34,5 @@ I've also done some hacking with `launchctl` to auto-push changes to my tir.html
 + RSS setup instructions in README on this branch. Mention that this is the version I use locally.
 
 + Add example RSS feed barebones
+
++ Update requirements in setup.py

@@ -1,5 +1,8 @@
-import click, sys, os, datetime, hashlib
+import click, sys, os, hashlib
 from xml.etree import ElementTree as ET
+from datetime import datetime
+from dateutil import parser
+import pytz
 
 # NOTE: change this to your html location
 html = "/Users/lukas/Desktop/Programming Projects/lukasschwab.github.io/tir.html"
@@ -14,8 +17,8 @@ with open(path, "r") as f:
     contents = [unicode(l, 'utf-8') for l in f.readlines()]
 
 # Date handling
-today = datetime.datetime.today().strftime("%B %d, %Y")
-pd = datetime.datetime.today().strftime("%a, %d %b %Y %H:%M:%S %z")
+today = datetime.today().strftime("%B %d, %Y")
+pd = datetime.today().strftime("%a, %d %b %Y %H:%M:%S %z")
 
 def add():
     # Ask for each input with click
@@ -44,8 +47,8 @@ def xml(url, name, author, note):
     addFeedItem(url, name, author, note)
     tree.write(feed)
 
-def updateFeed():
-    channel.find('pubDate').text = pd
+def updateFeed(time=pd):
+    channel.find('pubDate').text = time
     channel.find('lastBuildDate').text = pd
 
 def addFeedItem(url, name, author, note):
@@ -67,11 +70,20 @@ def rm():
 def rmXml():
     lastUpdated = channel.find('pubDate').text
     items = channel.findall('item')
+    length = len(items)
+    lastPublished = pytz.utc.localize(datetime(1, 1, 1))
     for item in items:
-        if item.find('pubDate').text == lastUpdated:
+        pubDateText = item.find('pubDate').text
+        pubDateTime = parser.parse(pubDateText)
+        if pubDateText == lastUpdated:
             channel.remove(item)
-    # Have to updateFeed to the previous post to delete repeatedly...
-    updateFeed()
+        elif pubDateTime > lastPublished:
+            lastPublished = pubDateTime
+    if length > 1:
+        # Would love to format this correctly, but probably nbd.
+        updateFeed(lastPublished.strftime("%a, %d %b %Y %H:%M:%S %z"))
+    else:
+        updateFeed()
     tree.write(feed)
 
 def write(contents):
