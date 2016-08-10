@@ -26,6 +26,4 @@ This was supposed to be functionality that I'd build into ezrss, but I'm finding
 
 I've also done some hacking with `crontab` to auto-push changes to my tir.html file. This is very hacky, and will stop whenever I have to do development in that repo. That script lives [here](https://github.com/lukasschwab/lukasschwab.github.io).
 
-## To do
-
-+ Add RSS feed
+If you're interested in running an RSS feed for tir, check out the `feed` branch of this project.
