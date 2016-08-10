@@ -33,6 +33,4 @@ I've also done some hacking with `launchctl` to auto-push changes to my tir.html
 
 + RSS setup instructions in README on this branch. Mention that this is the version I use locally.
 
-+ Add example RSS feed barebones
-
 + Update requirements in setup.py

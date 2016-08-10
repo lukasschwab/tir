@@ -1,0 +1,12 @@
+<!-- An example empty RSS feed for use with the feed generator -->
+<rss xmlns:ns0="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>tir</title>
+    <description>"Today I Read:" a collection of the little things you read each day. Cherish them!</description>
+    <link>http://lukasschwab.github.io/tir/</link>
+    <ns0:link href="http://lukasschwab.github.io/tir.xml" rel="self" type="application/rss+xml" />
+    <pubDate>Fri, 05 Aug 2016 22:22:00 -0700</pubDate>
+    <lastBuildDate>Wed, 10 Aug 2016 09:46:50 </lastBuildDate>
+    <generator>None</generator>
+  </channel>
+</rss>
