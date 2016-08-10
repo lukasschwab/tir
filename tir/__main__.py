@@ -40,6 +40,15 @@ def html(url, name, author, note):
     write(contents)
 
 def xml(url, name, author, note):
+    updateFeed()
+    addFeedItem(url, name, author, note)
+    tree.write(feed)
+
+def updateFeed():
+    channel.find('pubDate').text = pd
+    channel.find('lastBuildDate').text = pd
+
+def addFeedItem(url, name, author, note):
     e = ET.SubElement(channel, "item")
     ET.SubElement(e, "title").text = name
     ET.SubElement(e, "description").text = note
@@ -47,7 +56,6 @@ def xml(url, name, author, note):
     ET.SubElement(e, "link").text = url
     ET.SubElement(e, "guid").text = url
     ET.SubElement(e, "category").text = "tir"
-    tree.write(feed)
 
 def rm():
     # delete last post
