@@ -28,12 +28,13 @@ I've also done some hacking with `crontab` to auto-push changes to my tir.html f
 
 ## To do
 
++ Add RSS link on the tir site
+
 + Add remove functionality.
-    + Add time to the pd
+    + Mostly done; need to roll back to previous date if I want to be able to delete multiple items...
 
 + Only list last 15 or so tirs in the feed (cleanup)
     + Maybe need to include date as an attr for each item element? Shouldn't screw up the rest...
-
 
 + RSS setup instructions in README on this branch. Mention that this is the version I use locally.
 

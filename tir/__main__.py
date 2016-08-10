@@ -14,8 +14,8 @@ with open(path, "r") as f:
     contents = [unicode(l, 'utf-8') for l in f.readlines()]
 
 # Date handling
-today = datetime.date.today().strftime("%B %d, %Y")
-pd = datetime.date.today().strftime("%a, %d %b %Y %H:%M:%S %z")
+today = datetime.datetime.today().strftime("%B %d, %Y")
+pd = datetime.datetime.today().strftime("%a, %d %b %Y %H:%M:%S %z")
 
 def add():
     # Ask for each input with click
@@ -62,7 +62,17 @@ def rm():
     print "Following entry removed: \n" + contents[-2].replace("\t", "")
     del contents[-2]
     write(contents)
+    rmXml()
 
+def rmXml():
+    lastUpdated = channel.find('pubDate').text
+    items = channel.findall('item')
+    for item in items:
+        if item.find('pubDate').text == lastUpdated:
+            channel.remove(item)
+    # Have to updateFeed to the previous post to delete repeatedly...
+    updateFeed()
+    tree.write(feed)
 
 def write(contents):
     # Save changes to file
