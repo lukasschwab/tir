@@ -1,7 +1,12 @@
 import click, sys, os, datetime, hashlib
+from xml.etree import ElementTree as ET
 
-# NOTE: change this to your html version
-html = "~/Desktop/Programming Projects/lukasschwab.github.io/tir.html"
+# NOTE: change this to your html location
+html = "/Users/lukas/Desktop/Programming Projects/lukasschwab.github.io/tir.html"
+feed = "/Users/lukas/Desktop/Programming Projects/lukasschwab.github.io/tir.xml"
+
+tree = ET.parse(feed)
+channel = tree.getroot()[0]
 
 # Read file contents
 path = os.path.expanduser(html)
@@ -10,6 +15,7 @@ with open(path, "r") as f:
 
 # Date handling
 today = datetime.date.today().strftime("%B %d, %Y")
+pd = datetime.date.today().strftime("%a, %d %b %Y %H:%M:%S %z")
 
 def add():
     # Ask for each input with click
@@ -18,6 +24,7 @@ def add():
     author = click.prompt("Author")
     note = click.prompt("Note")
     html(url, name, author, note)
+    xml(url, name, author, note)
     click.echo("You read it!")
 
 def html(url, name, author, note):
@@ -31,6 +38,16 @@ def html(url, name, author, note):
     # Add new entry
     contents.insert(-1, htmlString)
     write(contents)
+
+def xml(url, name, author, note):
+    e = ET.SubElement(channel, "item")
+    ET.SubElement(e, "title").text = name
+    ET.SubElement(e, "description").text = note
+    ET.SubElement(e, "pubDate").text = pd
+    ET.SubElement(e, "link").text = url
+    ET.SubElement(e, "guid").text = url
+    ET.SubElement(e, "category").text = "tir"
+    tree.write(feed)
 
 def rm():
     # delete last post
