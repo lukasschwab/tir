@@ -17,24 +17,20 @@ def add():
     name = click.prompt("Title")
     author = click.prompt("Author")
     note = click.prompt("Note")
+    html(url, name, author, note)
+    click.echo("You read it!")
 
+def html(url, name, author, note):
     # Render into HTML
     htmlString = '\t<tr> <td><a href="'+url+'">'+name+'</a></td> <td>'+author+'</td> <td>'+note+'</td> <td>'+today+'</td> </tr>\n'
-
     # If it's a new day, interrupt table wiht a heading
     if today != contents[0][4:-4]:
         contents[0] = "<!--"+today+"-->\n"
         # Create a new separator row
         contents.insert(-1, '\n\t<td colspan="4"><h3 id="'+hashlib.md5(today).hexdigest()+'">'+today+"</h3></td>\n")
-
     # Add new entry
     contents.insert(-1, htmlString)
-
     write(contents)
-
-    click.echo("You read it!")
-    sys.exit(0)
-
 
 def rm():
     # delete last post
