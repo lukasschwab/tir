@@ -1,8 +1,7 @@
-import click, sys, os, hashlib
+import click, sys, os, hashlib, pytz
 from xml.etree import ElementTree as ET
 from datetime import datetime
 from dateutil import parser
-import pytz
 
 # NOTE: change this to your html location
 html = "/Users/lukas/Desktop/Programming Projects/lukasschwab.github.io/tir.html"
