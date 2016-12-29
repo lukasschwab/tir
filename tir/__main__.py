@@ -4,8 +4,8 @@ from datetime import datetime
 from dateutil import parser
 
 # NOTE: change this to your html location
-html = "/Users/lukas/Desktop/Programming Projects/lukasschwab.github.io/tir.html"
-feed = "/Users/lukas/Desktop/Programming Projects/lukasschwab.github.io/tir.xml"
+html = "/Users/lukas/Desktop/programming/lukasschwab.github.io/tir.html"
+feed = "/Users/lukas/Desktop/programming/lukasschwab.github.io/tir.xml"
 
 tree = ET.parse(feed)
 channel = tree.getroot()[0]
