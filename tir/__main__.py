@@ -6,6 +6,8 @@ from dateutil import parser
 # NOTE: change this to your html location
 html = "/Users/lukas/Desktop/programming/lukasschwab.github.io/tir.html"
 feed = "/Users/lukas/Desktop/programming/lukasschwab.github.io/tir.xml"
+# True -> latest additions at the bottom
+INORDER = True
 
 tree = ET.parse(feed)
 channel = tree.getroot()[0]
@@ -32,13 +34,26 @@ def add():
 def html(url, name, author, note):
     # Render into HTML
     htmlString = '\t<tr> <td><a href="'+url+'">'+name+'</a></td> <td>'+author+'</td> <td>'+note+'</td> <td>'+today+'</td> </tr>\n'
-    # If it's a new day, interrupt table wiht a heading
-    if today != contents[0][4:-4]:
-        contents[0] = "<!--"+today+"-->\n"
-        # Create a new separator row
-        contents.insert(-1, '\n\t<td colspan="4"><h3 id="'+hashlib.md5(today).hexdigest()+'">'+today+"</h3></td>\n")
-    # Add new entry
-    contents.insert(-1, htmlString)
+    if INORDER:
+        # If it's a new day, interrupt table wiht a heading
+        if today != contents[0][4:-4]:
+            contents[0] = "<!--"+today+"-->\n"
+            # Create a new separator row
+            contents.insert(-1, '\n\t<td colspan="4"><h3 id="'+hashlib.md5(today).hexdigest()+'">'+today+"</h3></td>\n")
+        # Add new entry
+        contents.insert(-1, htmlString)
+    else: # Put it at the beginning
+        if today != contents[0][4:-4]:
+            pos = contents.index('\t</tr>\n') + 1
+            contents.insert(pos, htmlString)
+            contents[0] = "<!--"+today+"-->\n"
+            contents.insert(pos, '\n\t<td colspan="4"><h3 id="'+hashlib.md5(today).hexdigest()+'">'+today+"</h3></td>\n")
+        else:
+            for i, s in enumerate(contents):
+                if today in s and i > 0:
+                    pos = i+1
+                    contents.insert(pos, htmlString)
+                    break
     write(contents)
 
 def xml(url, name, author, note):
