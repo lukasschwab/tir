@@ -75,11 +75,14 @@ def addFeedItem(url, name, author, note):
     ET.SubElement(e, "category").text = "tir"
 
 def rm():
-    # delete last post
-    print "Following entry removed: \n" + contents[-2].replace("\t", "")
-    del contents[-2]
-    write(contents)
-    rmXml()
+    if INORDER:
+        # delete last post
+        print "Following entry removed: \n" + contents[-2].replace("\t", "")
+        del contents[-2]
+        write(contents)
+        rmXml()
+    else:
+        click.echo("Reverse-order tir doesn't support deletion.")
 
 def rmXml():
     lastUpdated = channel.find('pubDate').text
