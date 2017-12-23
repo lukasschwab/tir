@@ -32,6 +32,12 @@ I've also done some hacking with `launchctl` to auto-push changes to my tir.html
 
 2. Modify [tir/\_\_main\_\_.py](https://github.com/lukasschwab/tir/blob/master/tir/__main__.py) to point at the correct feed file.
 
+### Reversibility
+
+By default, tir will add new items to the top of the table. To reverse this, toggle the flag `INORDER` in `__main__.py`.
+
+If you want to transition from one ordering to the other––i.e. if you have an established tir page with `INORDER = True` and you want to switch to `INORDER = False` or vice versa, use `reverse.py`.
+
 ## To do
 
 + Only list last 15 or so tirs in the feed (cleanup)

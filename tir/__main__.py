@@ -3,11 +3,11 @@ from xml.etree import ElementTree as ET
 from datetime import datetime
 from dateutil import parser
 
-# NOTE: change this to your html location
+# FIXME: change this to your html location
 html = "/Users/lukas/Desktop/programming/lukasschwab.github.io/tir.html"
 feed = "/Users/lukas/Desktop/programming/lukasschwab.github.io/tir.xml"
 # True -> latest additions at the bottom
-INORDER = True
+INORDER = False
 
 tree = ET.parse(feed)
 channel = tree.getroot()[0]
