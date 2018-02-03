@@ -1,4 +1,4 @@
-import click, sys, os, hashlib, pytz
+import click, sys, os, hashlib, pytz, webbrowser
 from xml.etree import ElementTree as ET
 from datetime import datetime
 from dateutil import parser
@@ -109,11 +109,15 @@ def write(contents):
         contents = "".join(contents).encode('utf-8')
         f.write(contents)
 
-
 @click.command()
 @click.option("--delete", is_flag=True, help="Deletes last entry")
-def main(delete):
+@click.option("--openFile", "-o", is_flag=True, help="Opens the tir page without operation")
+def main(delete, openfile):
     """Parses command-line arguments for tir"""
+    if openfile:
+        print "Opening " + path
+        webbrowser.open("file://" + path, new=0, autoraise=True)
+        return
     if delete:
         rm()
     else:
