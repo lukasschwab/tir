@@ -4,10 +4,14 @@ html {
   max-width: 80%;
 }
 
+body {
+  margin-top: 140px;
+  margin-bottom: 140px;
+}
+
 .title {
 	font-size: 70px; 
 	text-decoration: bold; 
-	margin-top: 2em; 
 	color: #0074D9;
 	text-align: center;
 }
@@ -17,7 +21,7 @@ h3 {
   margin-bottom: 0px;
   font-size: 12px;
   text-align: center;
-  color: #0074D9;
+  /*color: #0074D9;*/
 }
 
 p {
@@ -27,9 +31,9 @@ p {
 /* HORIZONTAL RULE BLOCK */
 hr {
 	height: 2px;
-    background-color: #0074D9;
-    border: none;
-    width: 50%;
-    margin-top: 50px;
-    margin-bottom: 50px;
+  background-color: #0074D9;
+  border: none;
+  width: 50%;
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
