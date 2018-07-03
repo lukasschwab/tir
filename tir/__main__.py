@@ -4,9 +4,9 @@ from datetime import datetime
 from dateutil import parser
 
 # FIXME: change this to your html location
-script_dir = os.path.dirname(os.path.realpath(__file__))
-html = os.path.join(script_dir, "../index.html")
-feed = os.path.join(script_dir, "../tir.xml")
+script_dir = "/Users/lukas/Programming/tir"
+html = os.path.join(script_dir, "index.html")
+feed = os.path.join(script_dir, "tir.xml")
 # True -> latest additions at the bottom
 INORDER = False
 
