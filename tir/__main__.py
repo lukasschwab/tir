@@ -65,6 +65,8 @@ def xml(url, name, author, note):
 def updateFeed(time=pd):
     channel.find('pubDate').text = time
     channel.find('lastBuildDate').text = pd
+    for child in channel.findall('item')[:-10]:
+        channel.remove(child)
 
 def addFeedItem(url, name, author, note):
     e = ET.SubElement(channel, "item")
