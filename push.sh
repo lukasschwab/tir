@@ -7,5 +7,5 @@ if ! git diff-index --quiet HEAD -- tir.html; then
     git add tir.xml
     git commit --quiet -m 'auto tir update'
     git push --quiet
-    /usr/local/bin/terminal-notifier -title 'tir' -message 'Automatically updated'  -open 'http://lukasschwab.github.io/tir' -sound default
+    terminal-notifier -title 'tir' -message 'Automatically updated' -open 'http://lukasschwab.github.io/tir' -sound default
 fi
