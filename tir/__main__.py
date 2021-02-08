@@ -16,7 +16,7 @@ channel = tree.getroot()[0]
 # Read file contents
 path = os.path.expanduser(html)
 with open(path, "r") as f:
-    contents = [unicode(l, 'utf-8') for l in f.readlines()]
+    contents = [l for l in f.readlines()]
 
 # Date handling
 today = datetime.today().strftime("%B %d, %Y")
@@ -80,7 +80,7 @@ def addFeedItem(url, name, author, note):
 def rm():
     if INORDER:
         # delete last post
-        print "Following entry removed: \n" + contents[-2].replace("\t", "")
+        print("Following entry removed: \n" + contents[-2].replace("\t", ""))
         del contents[-2]
         write(contents)
         rmXml()
@@ -115,14 +115,16 @@ def write(contents):
 @click.command()
 @click.option("--delete", is_flag=True, help="Deletes last entry")
 @click.option("--openFile", "-o", is_flag=True, help="Opens the tir page without operation")
-def main(delete, openfile):
+@click.option("--push", "-p", is_flag=True, help="Pushes tir updates")
+def main(delete, openfile, push):
     """Parses command-line arguments for tir"""
     if openfile:
-        print "Opening " + path
+        print("Opening " + path)
         webbrowser.open("file://" + path, new=0, autoraise=True)
-        return
-    if delete:
+    elif delete:
         rm()
+    elif push:
+        os.system("sh " + script_dir + "/push.sh")
     else:
         add()
 

@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup (
     name = "tir",
-    version="0.0.2",
+    version="0.0.3",
     packages=["tir"],
     entry_points={
         'console_scripts': [

@@ -8,4 +8,6 @@ if ! git diff-index --quiet HEAD -- tir.html; then
     git commit --quiet -m 'auto tir update'
     git push --quiet
     terminal-notifier -title 'tir' -message 'Automatically updated' -open 'http://lukasschwab.github.io/tir' -sound default
+else
+    echo "[tir] No changes to tir.html or tir.xml."
 fi
