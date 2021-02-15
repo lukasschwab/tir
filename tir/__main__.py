@@ -20,6 +20,7 @@ with open(path, "r") as f:
 
 # Date handling
 today = datetime.today().strftime("%B %d, %Y")
+today_hash = hashlib.md5(today.encode("utf-8")).hexdigest()
 pd = datetime.today().strftime("%a, %d %b %Y %H:%M:%S %z")
 
 def add():
@@ -36,11 +37,11 @@ def html(url, name, author, note):
     # Render into HTML
     htmlString = '\t<tr> <td><a href="'+url+'">'+name+'</a></td> <td>'+author+'</td> <td>'+note+'</td> <td>'+today+'</td> </tr>\n'
     if INORDER:
-        # If it's a new day, interrupt table wiht a heading
+        # If it's a new day, interrupt table with a heading
         if today != contents[0][4:-4]:
             contents[0] = "<!--"+today+"-->\n"
             # Create a new separator row
-            contents.insert(-1, '\n\t<td colspan="4"><h3 id="'+hashlib.md5(today).hexdigest()+'">'+today+"</h3></td>\n")
+            contents.insert(-1, '\n\t<td colspan="4"><h3 id="'+today_hash+'">'+today+"</h3></td>\n")
         # Add new entry
         contents.insert(-1, htmlString)
     else: # Put it at the beginning
@@ -48,7 +49,7 @@ def html(url, name, author, note):
             pos = contents.index('\t</tr>\n') + 1
             contents.insert(pos, htmlString)
             contents[0] = "<!--"+today+"-->\n"
-            contents.insert(pos, '\n\t<td colspan="4"><h3 id="'+hashlib.md5(today).hexdigest()+'">'+today+"</h3></td>\n")
+            contents.insert(pos, '\n\t<td colspan="4"><h3 id="'+today_hash+'">'+today+"</h3></td>\n")
         else:
             for i, s in enumerate(contents):
                 if today in s and i > 0:
@@ -108,7 +109,7 @@ def rmXml():
 
 def write(contents):
     # Save changes to file
-    with open(path, "w") as f:
+    with open(path, "wb") as f:
         contents = "".join(contents).encode('utf-8')
         f.write(contents)
 
