@@ -1,7 +1,7 @@
 #!/bin/sh
 cd ~/Programming/tir/
 # If there's a change to tir.html
-if ! git diff-index --quiet HEAD -- tir.html; then
+if ! git diff-index --quiet HEAD -- index.html tir.xml; then
     # Push any changes in tir.html / tir.xml to github
     git add tir.html
     git add tir.xml
