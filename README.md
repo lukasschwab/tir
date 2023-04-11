@@ -1,6 +1,6 @@
 # tir
 <p align="center">
-tir––short for "Today I Read"––is a barebones CLI for logging memorable articles.<br><br>
+tir – short for "Today I Read" – is a barebones CLI for logging memorable articles. It's archived; use <a href="https://github.com/lukasschwab/tiir">tiir</a> instead!<br><br>
 <img src="http://lukasschwab.github.io/img/reading.gif">
 </p>
 
